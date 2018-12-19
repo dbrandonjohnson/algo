@@ -5,10 +5,10 @@
     register: OS
 
   - include_tasks: ubuntu.yml
-    when: '"Ubuntu" in OS.stdout'
+    when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   
   - include_tasks: fedora.yml
-    when: '"Fedora" in OS.stdout'
+    when: ansible_distribution == 'Fedora'
 
   - include_tasks: freebsd.yml
     when: '"FreeBSD" in OS.stdout'
