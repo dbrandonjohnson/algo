@@ -3,7 +3,6 @@
   dnf:
     name: dnscrypt-proxy
     state: latest
-    update_cache: true
 
 - name: Fedora | Ensure that the dnscrypt-proxy service directory exist
   file:
