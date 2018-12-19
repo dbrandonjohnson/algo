@@ -7,6 +7,10 @@
   include_tasks: freebsd.yml
   when: ansible_distribution == 'FreeBSD'
 
+- name: Include tasks for Fedora
+  include_tasks: fedora.yml
+  when: ansible_distribution == 'Fedora'
+
 - name: dnscrypt-proxy ip-blacklist configured
   template:
     src: ip-blacklist.txt.j2

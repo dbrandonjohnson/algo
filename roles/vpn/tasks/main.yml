@@ -4,10 +4,13 @@
       include_role:
         name: wireguard
       tags: wireguard
-      when: wireguard_enabled and ansible_distribution == 'Ubuntu'
+      when: wireguard_enabled and ansible_distribution == 'Ubuntu' or ansible_distribution == 'Fedora'
 
     - include_tasks: ubuntu.yml
       when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    
+    - include_tasks: fedora.yml
+      when: ansible_distribution == 'Fedora'
 
     - name: Ensure that the strongswan user exist
       user:

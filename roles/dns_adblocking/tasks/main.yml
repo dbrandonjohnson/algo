@@ -12,6 +12,9 @@
     - include_tasks: freebsd.yml
       when: ansible_distribution == 'FreeBSD'
 
+    - include_tasks: fedora.yml
+      when: ansible_distribution == 'Fedora'
+
     - name: Dnsmasq configured
       template:
         src: dnsmasq.conf.j2

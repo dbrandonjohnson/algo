@@ -1,0 +1,23 @@
+---
+- name: Install dnscrypt-proxy
+  dnf:
+    name: dnscrypt-proxy
+    state: latest
+    update_cache: true
+
+- name: Fedora | Ensure that the dnscrypt-proxy service directory exist
+  file:
+    path: /etc/systemd/system/dnscrypt-proxy.service.d/
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Fedora | Add capabilities to bind ports
+  copy:
+    dest: /etc/systemd/system/dnscrypt-proxy.service.d/99-capabilities.conf
+    content: |
+      [Service]
+      AmbientCapabilities=CAP_NET_BIND_SERVICE
+  notify:
+   - restart dnscrypt-proxy

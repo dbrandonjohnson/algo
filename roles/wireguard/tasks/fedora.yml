@@ -1,0 +1,23 @@
+---
+- name: WireGuard repository configured
+  yum_repository:
+    name: wireguard
+    include: https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/fedora-29/jdoss-wireguard-fedora-29.repo
+  notify: yum-clean-metadata
+
+- name: WireGuard installed
+  yum:
+    name: name={{ item }}
+    with_items:
+      - wireguard-dkms
+      - wireguard-tools
+    state: present
+
+- name: WireGuard reload-module-on-update
+  file:
+    dest: /etc/wireguard/.reload-module-on-update
+    state: touch
+
+- set_fact:
+    service_name: "wg-quick@{{ wireguard_interface }}"
+  tags: always

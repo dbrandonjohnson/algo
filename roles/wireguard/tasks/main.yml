@@ -20,6 +20,11 @@
   when: ansible_distribution == 'FreeBSD'
   tags: always
 
+- name: Include tasks for Fedora
+  include_tasks: fedora.yml
+  when: ansible_distribution == 'Fedora'
+  tags: always
+
 - name: Generate keys
   import_tasks: keys.yml
   tags: update-users
