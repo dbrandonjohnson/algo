@@ -94,8 +94,6 @@
       - git
       - screen
       - coreutils
-      - iptables-persistent
-      - cgroup-tools
       - openssl
     sysctl:
       - item: net.ipv4.ip_forward
