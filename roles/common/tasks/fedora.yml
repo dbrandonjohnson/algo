@@ -4,7 +4,8 @@
     dnf:
       name: "{{ item }}"
     with_items:
-      - python2.7
+      - python2
+      - python2-libselinux
       - sudo
 
   - name: Fedora | Configure defaults
