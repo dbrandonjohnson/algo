@@ -5,7 +5,10 @@
     register: OS
 
   - include_tasks: ubuntu.yml
-    when: '"Ubuntu" in OS.stdout or "Linux" in OS.stdout'
+    when: '"Ubuntu" in OS.stdout'
+  
+  - include_tasks: fedora.yml
+    when: '"Fedora" in OS.stdout'
 
   - include_tasks: freebsd.yml
     when: '"FreeBSD" in OS.stdout'
