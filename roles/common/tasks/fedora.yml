@@ -3,6 +3,7 @@
   - name: Fedora | Install prerequisites
     dnf:
       name: "{{ item }}"
+      state: latest
     with_items:
       - python2
       - python2-libselinux
