@@ -28,3 +28,11 @@
     mode: 0755
     owner: root
     group: root
+
+- name: Fedora | Workaround until SELinux bug is fixed create cache directory - https://github.com/fedora-selinux/selinux-policy/issues/231
+  file:
+    path: /var/log/dnscrypt-proxy
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
