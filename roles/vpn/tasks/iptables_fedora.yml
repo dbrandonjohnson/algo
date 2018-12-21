@@ -8,9 +8,9 @@
     group: root
     mode: 0640
   with_items:
-    - { src: rules.v4.j2, dest: /etc/iptables/rules.v4 }
+    - { src: rules.v4.j2, dest: /etc/sysconfig/iptables }
   notify:
-    - restart iptables
+    - restart iptables-fedora-v4
 
 - name: Iptables configured
   template:
@@ -21,6 +21,6 @@
     mode: 0640
   when: ipv6_support
   with_items:
-    - { src: rules.v6.j2, dest: /etc/iptables/rules.v6 }
+    - { src: rules.v6.j2, dest: /etc/sysconfig/ip6tables }
   notify:
-    - restart iptables
+    - restart iptables-fedora-v6
