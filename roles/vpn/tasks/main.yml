@@ -15,7 +15,7 @@
     - name: Ensure that the strongswan user exist
       user:
         name: strongswan
-        group: nogroup
+        group: nobody
         shell: "{{ strongswan_shell }}"
         home: "{{ strongswan_home }}"
         state: present
