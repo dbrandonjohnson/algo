@@ -15,10 +15,10 @@
       - wireguard-tools
     state: latest
 
-- name: WireGuard reload-module-on-update
-  file:
-    dest: /etc/wireguard/.reload-module-on-update
-    state: touch
+#- name: WireGuard reload-module-on-update
+#  file:
+#    dest: /etc/wireguard/.reload-module-on-update
+#    state: touch
 
 - set_fact:
     service_name: "wg-quick@{{ wireguard_interface }}"
