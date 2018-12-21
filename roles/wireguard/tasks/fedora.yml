@@ -5,7 +5,6 @@
     baseurl: https://copr-be.cloud.fedoraproject.org/results/jdoss/wireguard/fedora-$releasever-$basearch/
     gpgcheck: yes
     gpgcakey: https://copr-be.cloud.fedoraproject.org/results/jdoss/wireguard/pubkey.gpg
-    
   notify: yum-clean-metadata
 
 - name: WireGuard installed
