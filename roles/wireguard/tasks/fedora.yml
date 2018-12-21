@@ -2,6 +2,7 @@
 - name: WireGuard repository configured
   yum_repository:
     name: wireguard
+    description: Copr Wireguard repo
     baseurl: https://copr-be.cloud.fedoraproject.org/results/jdoss/wireguard/fedora-$releasever-$basearch/
     gpgcheck: yes
     gpgcakey: https://copr-be.cloud.fedoraproject.org/results/jdoss/wireguard/pubkey.gpg
