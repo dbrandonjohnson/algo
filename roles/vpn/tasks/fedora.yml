@@ -12,8 +12,7 @@
   service: name={{ item }} enabled=yes
   with_items:
     - strongswan
-    - netfilter-persistent
-
+    
 - name: Fedora | Ensure that the strongswan service directory exist
   file:
     path: /etc/systemd/system/strongswan.service.d/
