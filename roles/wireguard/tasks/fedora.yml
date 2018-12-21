@@ -2,7 +2,10 @@
 - name: WireGuard repository configured
   yum_repository:
     name: wireguard
-    include: https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/fedora-29/jdoss-wireguard-fedora-29.repo
+    baseurl: https://copr-be.cloud.fedoraproject.org/results/jdoss/wireguard/fedora-$releasever-$basearch/
+    gpgcheck: yes
+    gpgcakey: https://copr-be.cloud.fedoraproject.org/results/jdoss/wireguard/pubkey.gpg
+    
   notify: yum-clean-metadata
 
 - name: WireGuard installed
