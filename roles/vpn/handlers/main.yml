@@ -15,3 +15,15 @@
 
 - name: rereadcrls
   shell: ipsec rereadcrls; ipsec purgecrls
+
+- name: save iptables-fedora-v4
+  shell: iptables save
+
+- name: save iptables-fedora-v6
+  shell: ip6tables-save
+
+- name: restart iptables-fedora-v4
+  service: name=iptables state=restarted
+
+- name: restart iptables-fedora-v6
+  service: name=ip6tables state=restarted

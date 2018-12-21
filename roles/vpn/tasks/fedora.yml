@@ -12,7 +12,7 @@
   service: name={{ item }} enabled=yes
   with_items:
     - strongswan
-    
+
 - name: Fedora | Ensure that the strongswan service directory exist
   file:
     path: /etc/systemd/system/strongswan.service.d/
@@ -29,5 +29,21 @@
     - daemon-reload
     - restart strongswan
 
-- include_tasks: iptables.yml
+- name: Fedora | disable and stop firewalld
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- name: Fedora | start and enable iptables
+  service:
+    name: iptables
+    state: started
+    enabled: yes
+  service:
+    name: ip6tables
+    state: started
+    enabled: yes
+
+- include_tasks: iptables_fedora.yml
   tags: iptables

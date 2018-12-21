@@ -95,6 +95,7 @@
       - screen
       - coreutils
       - openssl
+      - iptables-services
     sysctl:
       - item: net.ipv4.ip_forward
         value: 1
