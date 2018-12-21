@@ -3,3 +3,8 @@
   service:
     name: "{{ service_name }}"
     state: restarted
+    
+- name: yum-clean-metadata
+  command: yum clean metadata
+  args:
+    warn: no
