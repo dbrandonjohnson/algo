@@ -10,11 +10,10 @@
 
 - name: WireGuard installed
   yum:
-    name: "{{ item }}"
-    with_items:
+    name:
       - wireguard-dkms
       - wireguard-tools
-    state: present
+    state: latest
 
 - name: WireGuard reload-module-on-update
   file:
