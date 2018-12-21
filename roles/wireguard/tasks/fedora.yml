@@ -19,8 +19,7 @@
   file:
     path: /etc/wireguard
     state: directory
-    mod: 0755
-
+    mode: 0755
 
 - name: WireGuard reload-module-on-update
   file:
