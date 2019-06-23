@@ -42,7 +42,7 @@
         test -x /usr/bin/python2.7 ||
         sudo dnf install python2 -y &&
         sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 &&
-        rpm -ql python2-dnf || dnf install python2-dnf -y
+        rpm -ql python3-dnf || dnf install python3-dnf -y
       changed_when: false
       when: "'fedora' in distribution.stdout|lower"
 
