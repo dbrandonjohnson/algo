@@ -107,7 +107,7 @@
     - always
 
 - name: Install tools
-  package: name="{{ item }}" state=present
+  dnf: name="{{ item }}" state=present
   with_items:
     - "{{ tools|default([]) }}"
   tags:
