@@ -5,15 +5,15 @@
       name: "{{ item }}"
       state: latest
     with_items:
-      - python2
-      - python2-libselinux
+      - python3
+      - python3-libselinux
       - sudo
 
   - name: Fedora | Configure defaults
     alternatives:
-      name: python
-      link: /usr/bin/python
-      path: /usr/bin/python2.7
+      name: python3
+      link: /usr/bin/python3
+      path: /usr/bin/python3.7
       priority: 1
     tags:
       - update-alternatives
@@ -23,39 +23,39 @@
 - name: Gather facts
   setup:
 
-- name: Cloud only tasks
-  block:
-    - name: Install software updates
-      apt:
-        update_cache: true
-        install_recommends: true
-        upgrade: dist
+# - name: Cloud only tasks
+#   block:
+#     - name: Install software updates
+#       apt:
+#         update_cache: true
+#         install_recommends: true
+#         upgrade: dist
 
-    - name: Check if reboot is required
-      shell: >
-        if [[ -e /var/run/reboot-required ]]; then echo "required"; else echo "no"; fi
-      args:
-        executable: /bin/bash
-      register: reboot_required
+#     - name: Check if reboot is required
+#       shell: >
+#         if [[ -e /var/run/reboot-required ]]; then echo "required"; else echo "no"; fi
+#       args:
+#         executable: /bin/bash
+#       register: reboot_required
 
-    - name: Reboot
-      shell: sleep 2 && shutdown -r now "Ansible updates triggered"
-      async: 1
-      poll: 0
-      when: reboot_required is defined and reboot_required.stdout == 'required'
-      ignore_errors: true
+#     - name: Reboot
+#       shell: sleep 2 && shutdown -r now "Ansible updates triggered"
+#       async: 1
+#       poll: 0
+#       when: reboot_required is defined and reboot_required.stdout == 'required'
+#       ignore_errors: true
 
-    - name: Wait until SSH becomes ready...
-      local_action:
-        module: wait_for
-        port: 22
-        host: "{{ inventory_hostname }}"
-        search_regex: OpenSSH
-        delay: 10
-        timeout: 320
-      when: reboot_required is defined and reboot_required.stdout == 'required'
-      become: false
-  when: algo_provider != "local"
+#     - name: Wait until SSH becomes ready...
+#       local_action:
+#         module: wait_for
+#         port: 22
+#         host: "{{ inventory_hostname }}"
+#         search_regex: OpenSSH
+#         delay: 10
+#         timeout: 320
+#       when: reboot_required is defined and reboot_required.stdout == 'required'
+#       become: false
+#   when: algo_provider != "local"
 
 
 - name: Disable MOTD on login and SSHD
