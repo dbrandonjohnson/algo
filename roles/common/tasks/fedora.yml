@@ -107,7 +107,7 @@
     - always
 
 - name: Install tools
-  dnf: name="{{ item }}" state=present
+  yum: name="{{ item }}" state=present
   with_items:
     - "{{ tools|default([]) }}"
   tags:
